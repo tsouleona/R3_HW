@@ -132,13 +132,13 @@
     {
         echo $data_all[$i];
     }
-    for($i = 0 ; $i < $count ; $i++)
-    {
-        if(preg_match("/M/", $data_all[$i]))
-        {
-            $data_all[$i] = "x";
-        }
-    }
+    // for($i = 0 ; $i < $count ; $i++)
+    // {
+    //     if(preg_match("/M/", $data_all[$i]))
+    //     {
+    //         $data_all[$i] = "x";
+    //     }
+    // }
     echo "<br>";
     for($k = 0 ; $k < $count; $k++)
     {
