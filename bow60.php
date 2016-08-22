@@ -11,14 +11,10 @@
         }while($bow[$i] == 0);
     }
 
-    //echo "炸彈位置<br>";
-
-    //個位數前面補0
     for($i = 0 ; $i < 1200 ; $i++)
     {
         $bow[$i] = str_pad($bow[$i],4,"0",STR_PAD_LEFT);
     }
-    //全部給null
     for($i=0 ; $i<50 ; $i++)
     {
         for($j=0 ; $j<60 ; $j++)
@@ -34,8 +30,6 @@
 
         $origin[$x][$y] = "M";
     }
-
-    //echo "<br>-------------------------------------------------------<br>";
     $data_all =[];
 
     for($i=0 ; $i<50 ; $i++)
@@ -45,13 +39,8 @@
             $data_all[] = $origin[$i][$j];
         }
     }
-    //echo "<br>變一維-------------------------------------------------------<br>";
-    $count = count($data_all);
-    // for($i = 0 ; $i < $count ; $i++)
-    // {
-    //     echo $data_all[$i];
-    // }
 
+    $count = count($data_all);
     for($i = 0 ; $i < $count ; $i++)
     {
         if(!preg_match("/M/", $data_all[$i]))
@@ -113,21 +102,6 @@
 
         }
     }
-    //echo "<br>計算幾顆炸彈-------------------------------------------------------<br>";
-    // for($i = 0 ; $i < $count ; $i++)
-    // {
-    //     echo $data_all[$i];
-    // }
-    //echo "<br>";
-
-    // for($i = 0 ; $i < $count ; $i++)
-    // {
-    //     if(preg_match("/M/", $data_all[$i]))
-    //     {
-    //         $data_all[$i] = "x";
-    //     }
-    // }
-    // echo "<br>";
 
     for($k = 0 ; $k < 3000; $k++)
     {
@@ -147,10 +121,5 @@
         for($j=0 ; $j<61; $j++)
         {
             echo $ans[$i][$j];
-
-            // if(preg_match("/N/", $ans[$i][$j]))
-            // {
-            //     echo "<br>";
-            // }
         }
     }
