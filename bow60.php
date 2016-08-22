@@ -1,47 +1,16 @@
 <?php
-    for ($i = 0; $i < 1200; $i++){
-        do{
-            $bow[$i] = rand(0, 2999);
-            for ($j = 0 ; $j < $i ; $j++){
-                if ($bow[$i] == $bow[$j]) {
-                    $bow[$i] = 0;
-                    break;
-                }
-            }
-        }while($bow[$i] == 0);
-    }
-
-    for($i = 0 ; $i < 1200 ; $i++)
+    for ($i = 0; $i < 1200; $i++)
     {
-        $bow[$i] = str_pad($bow[$i],4,"0",STR_PAD_LEFT);
+        $data_all[$i] = "M";
     }
-    for($i=0 ; $i<50 ; $i++)
+    for($i = 1200 ; $i < 3000 ; $i++)
     {
-        for($j=0 ; $j<60 ; $j++)
-        {
-            $origin[$i][$j] = 0;
-        }
+        $data_all[$i] = 0;
     }
 
-    for($k = 0 ; $k < 1200 ; $k++)
-    {
-        $x = floor((int)$bow[$k]/60);
-        $y = (int)$bow[$k]%60;
+    shuffle($data_all);
 
-        $origin[$x][$y] = "M";
-    }
-    $data_all =[];
-
-    for($i=0 ; $i<50 ; $i++)
-    {
-        for($j=0 ; $j<60 ; $j++)
-        {
-            $data_all[] = $origin[$i][$j];
-        }
-    }
-
-    $count = count($data_all);
-    for($i = 0 ; $i < $count ; $i++)
+    for($i = 0 ; $i < 3000 ; $i++)
     {
         if(!preg_match("/M/", $data_all[$i]))
         {
