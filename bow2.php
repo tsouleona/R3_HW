@@ -36,13 +36,12 @@
                     $data_all[$i] = (int)$data_all[$i] + 1;
                 }
             }
-            if(($i - 10) > 0)
+
+            if(preg_match("/M/", $data_all[$i - 10]))
             {
-                if(preg_match("/M/", $data_all[$i - 10]))
-                {
-                    $data_all[$i] = (int)$data_all[$i] + 1;
-                }
+                $data_all[$i] = (int)$data_all[$i] + 1;
             }
+
             if(($i - 9) % 10 != 0)
             {
                 if(preg_match("/M/", $data_all[$i - 9]))
@@ -74,6 +73,14 @@
     }
     for($k = 0 ; $k < 100; $k++)
     {
+        if(preg_match("/M/", $data_all[$k]))
+        {
+            $data_all[$k] = "x";
+        }
+
+    }
+    for($k = 0 ; $k < 100; $k++)
+    {
         $x = floor($k/10);
         $y = $k%10;
         $ans[$x][$y] = $data_all[$k];
@@ -86,6 +93,10 @@
     {
         for($j=0 ; $j<11 ; $j++)
         {
-            echo $ans[$i][$j];
+            echo $ans[$i][$j]." ";
+            if(preg_match("/N/", $ans[$i][$j]))
+            {
+                echo "<br>";
+            }
         }
     }
