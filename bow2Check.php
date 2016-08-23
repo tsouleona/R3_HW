@@ -3,7 +3,7 @@
     //判別輸入的數量
     if($check == null)
     {
-        echo "不符合，您輸入的內容為空。";
+        echo "不符合，因為您輸入的內容為空。";
         exit;
     }
 
@@ -20,22 +20,22 @@
     $count = @array_count_values($original);
     if($count['n'] != 0)
     {
-        echo "不符合，N要大寫。";
+        echo "不符合，因為N要大寫。";
         exit;
     }
     if($count['m'] != 0)
     {
-        echo "不符合，M要大寫。";
+        echo "不符合，因為M要大寫。";
         exit;
     }
     if($count['N'] != 9)
     {
-        echo "不符合，N的數量不對。";
+        echo "不符合，因為N的數量不對。";
         exit;
     }
     if($count['M'] != 40)
     {
-        echo "不符合，M的數量不對。";
+        echo "不符合，因為M的數量不對。";
         exit;
     }
 
