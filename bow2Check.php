@@ -73,7 +73,7 @@
                     $data_all[$i] = (int)$data_all[$i] + 1;
                 }
             }
-            if(($i - 10) > 0)
+            if(($i - 10) >= 0)
             {
                 if(preg_match("/M/", $data_all[$i - 10]))
                 {
