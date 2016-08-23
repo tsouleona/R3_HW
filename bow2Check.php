@@ -3,7 +3,7 @@
     //判別輸入的數量
     if($check == null)
     {
-        echo "您輸入的內容為空";
+        echo "不符合，您輸入的內容為空。";
         exit;
     }
 
@@ -14,28 +14,28 @@
     //預先判別格式
     if(count($data_all) < 99)
     {
-        echo "您輸入的內容長度不足";
+        echo "不符合，因為您輸入的內容長度不足。";
         exit;
     }
     $count = @array_count_values($original);
     if($count['n'] != 0)
     {
-        echo "N要大寫";
+        echo "不符合，N要大寫。";
         exit;
     }
     if($count['m'] != 0)
     {
-        echo "M要大寫";
+        echo "不符合，M要大寫。";
         exit;
     }
     if($count['N'] != 9)
     {
-        echo "N的數量不對";
+        echo "不符合，N的數量不對。";
         exit;
     }
     if($count['M'] != 40)
     {
-        echo "M的數量不對";
+        echo "不符合，M的數量不對。";
         exit;
     }
 
@@ -136,9 +136,9 @@
     $compare = strcmp($stringFinal, $check);
     if( $compare == 0)
     {
-         echo "正確";
+         echo "符合。";
     }
     elseif($compare != 0)
     {
-        echo "數字錯誤";
+        echo "不符合，因為數字錯誤。";
     }
