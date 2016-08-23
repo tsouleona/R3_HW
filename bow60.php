@@ -74,14 +74,6 @@
 
     for($k = 0 ; $k < 3000; $k++)
     {
-        if(preg_match("/M/", $data_all[$k]))
-        {
-            $data_all[$k] = "x";
-        }
-
-    }
-    for($k = 0 ; $k < 3000; $k++)
-    {
         $x = floor($k/60);
         $y = $k%60;
 
@@ -97,10 +89,7 @@
     {
         for($j=0 ; $j<61; $j++)
         {
-            echo $ans[$i][$j]." ";
-            if(preg_match("/N/", $ans[$i][$j]))
-            {
-                echo "<br>";
-            }
+            echo $ans[$i][$j];
+
         }
     }
