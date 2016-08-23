@@ -10,6 +10,7 @@
 
     shuffle($data_all);
 
+
     for($i = 0 ; $i < 3000 ; $i++)
     {
         if(!preg_match("/M/", $data_all[$i]))
@@ -35,13 +36,12 @@
                     $data_all[$i] = (int)$data_all[$i] + 1;
                 }
             }
-            if(($i - 60) > 0)
+
+            if(preg_match("/M/", $data_all[$i - 60]))
             {
-                if(preg_match("/M/", $data_all[$i - 60]))
-                {
-                    $data_all[$i] = (int)$data_all[$i] + 1;
-                }
+                $data_all[$i] = (int)$data_all[$i] + 1;
             }
+
             if(($i - 59) % 60 != 0)
             {
                 if(preg_match("/M/", $data_all[$i - 59]))
@@ -74,8 +74,16 @@
 
     for($k = 0 ; $k < 3000; $k++)
     {
+        if(preg_match("/M/", $data_all[$k]))
+        {
+            $data_all[$k] = "x";
+        }
+
+    }
+    for($k = 0 ; $k < 3000; $k++)
+    {
         $x = floor($k/60);
-        $y = $k % 60;
+        $y = $k%60;
 
         $ans[$x][$y] = $data_all[$k];
     }
@@ -89,6 +97,10 @@
     {
         for($j=0 ; $j<61; $j++)
         {
-            echo $ans[$i][$j];
+            echo $ans[$i][$j]." ";
+            if(preg_match("/N/", $ans[$i][$j]))
+            {
+                echo "<br>";
+            }
         }
     }
