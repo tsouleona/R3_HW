@@ -20,22 +20,22 @@
     $count = @array_count_values($original);
     if($count['n'] != 0)
     {
-        echo "N要大寫<br>";
+        echo "N要大寫";
         exit;
     }
     if($count['m'] != 0)
     {
-        echo "M要大寫<br>";
+        echo "M要大寫";
         exit;
     }
     if($count['N'] != 9)
     {
-        echo "N的數量不對<br>";
+        echo "N的數量不對";
         exit;
     }
     if($count['M'] != 40)
     {
-        echo "M的數量不對<br>";
+        echo "M的數量不對";
         exit;
     }
 
@@ -140,5 +140,5 @@
     }
     elseif($compare != 0)
     {
-        echo "數字錯誤<br>";
+        echo "數字錯誤";
     }
