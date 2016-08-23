@@ -12,32 +12,35 @@
     $original = str_split($trunString);
     $data_all = $original;
     //預先判別格式
-    if(count($data_all) < 99)
+    $stringLen = count($data_all);
+    if($stringLen < 99)
     {
-        echo "不符合，因為您輸入的內容長度不足。";
+        echo "不符合，因為您輸入的內容長度不足，您的字串為[".$stringLen."]個字符。";
         exit;
     }
     $count = @array_count_values($original);
-    if($count['n'] != 0)
-    {
-        echo "不符合，因為N要大寫。";
-        exit;
-    }
+
     if($count['m'] != 0)
     {
         echo "不符合，因為M要大寫。";
         exit;
     }
-    if($count['N'] != 9)
-    {
-        echo "不符合，因為N的數量不對。";
-        exit;
-    }
     if($count['M'] != 40)
     {
-        echo "不符合，因為M的數量不對。";
+        echo "不符合，因為炸彈的數量不對，您設置了[".$count['M']."]顆炸彈。";
         exit;
     }
+    if($count['n'] != 0)
+    {
+        echo "不符合，因為N要大寫。";
+        exit;
+    }
+    if($count['N'] != 9)
+    {
+        echo "不符合，因為N的數量不對，您設置[".$count['N']."]行換行字符。";
+        exit;
+    }
+
 
 //開始判別對錯
     for($i = 0 ; $i < 100 ; $i++)
