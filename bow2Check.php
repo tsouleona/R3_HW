@@ -11,10 +11,11 @@
     {
         echo '不符合，因為內容有特殊字元。\n';
     }
-    $checkarray = str_split($check);//變陣列
-    $stringLen = count($checkarray);
-    $count = @array_count_values($checkarray);
-    $tag = 0;
+    $checkarray = str_split($check);//原本的字串變陣列
+    $stringLen = count($checkarray);//傳進來的陣列長度
+    $count = @array_count_values($checkarray);//紀錄裡面的值各有多少
+    $tag = 0;//紀錄有沒有錯誤
+
     if($stringLen < 109 || $stringLen > 109)
     {
         $x = ceil($stringLen/11);
@@ -51,7 +52,6 @@
         $trunString = implode($cutString);//變字串
         $data_all = str_split($trunString);//變陣列
 
-        //開始判別對錯
         for($i = 0 ; $i < 100 ; $i++)
         {
             if(preg_match("/m/", $data_all[$i]))
@@ -62,7 +62,6 @@
             {
                 $data_all[$i] = "0" ;
             }
-
         }
         for($i = 0 ; $i < 109 ; $i++)
         {
@@ -71,7 +70,9 @@
                 $checkarray[$i] = "M";
             }
         }
-        $compareString = implode($checkarray);//變字串
+        $compareString = implode($checkarray);//把小寫M變成大寫後的字串
+
+        //開始判別對錯
         for($i = 0 ; $i < 100 ; $i++)
         {
             if(!preg_match("/M/", $data_all[$i]))
@@ -151,9 +152,9 @@
             }
         }
 
-        $stringFinal = implode("", $final);
-        $compare = strcmp($stringFinal, $check);
-        $compare2 = strcmp($stringFinal, $compareString);
+        $stringFinal = implode("", $final);//把結果變字串
+        $compare = strcmp($stringFinal, $check);//結果字串與一開始的字串互相比對
+        $compare2 = strcmp($stringFinal, $compareString);//有把小寫M變成大寫後的原始字串與結果字串比對
 
         if( $compare == 0)
         {
