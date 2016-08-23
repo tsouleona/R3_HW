@@ -6,19 +6,14 @@
         echo "不符合，因為您輸入的內容為空。";
         exit;
     }
-
-    $cutString = explode("N",$check);
-    $trunString = implode($cutString);
-    $original = str_split($trunString);
-    $data_all = $original;
-    //預先判別格式
-    $stringLen = count($data_all);
-    if($stringLen < 99)
+    $checkarray = str_split($check);//變陣列
+    $stringLen = count($checkarray);
+    if($stringLen < 109 || $stringLen > 109)
     {
-        echo "不符合，因為您輸入的內容長度不足，您的字串為[".$stringLen."]個字符。";
+        echo "不符合，因為內容長度為109，您的字串為[".$stringLen."]個字符。";
         exit;
     }
-    $count = @array_count_values($original);
+    $count = @array_count_values($checkarray);
 
     if($count['m'] != 0)
     {
@@ -27,7 +22,7 @@
     }
     if($count['M'] != 40)
     {
-        echo "不符合，因為炸彈的數量不對，您設置了[".$count['M']."]顆炸彈。";
+        echo "不符合，因為炸彈的數量限制為40，您設置了[".$count['M']."]顆炸彈。";
         exit;
     }
     if($count['n'] != 0)
@@ -37,9 +32,16 @@
     }
     if($count['N'] != 9)
     {
-        echo "不符合，因為N的數量不對，您設置[".$count['N']."]行換行字符。";
+        echo "不符合，因為N的數量限制為9，您設置[".$count['N']."]行換行字符。";
         exit;
     }
+
+    $cutString = explode("N",$check);//以N為開頭切割
+    $trunString = implode($cutString);//變字串
+    $original = str_split($trunString);//變陣列
+    $data_all = $original;
+    //預先判別格式
+
 
 
 //開始判別對錯
@@ -121,27 +123,37 @@
     {
         $ans[$i][10] = "N";
     }
-    for($i=0 ; $i<11 ; $i++)
-    {
-        for($j=0 ; $j<11 ; $j++)
-        {
-            $ans[$i][$j];
-        }
-    }
-    for($i=0 ; $i<11 ; $i++)
+
+    for($i=0 ; $i<10 ; $i++)
     {
         for($j=0 ; $j<11 ; $j++)
         {
              $final[] = $ans[$i][$j];
         }
     }
+
+
     $stringFinal = implode("", $final);
     $compare = strcmp($stringFinal, $check);
+
     if( $compare == 0)
     {
          echo "符合。";
     }
     elseif($compare != 0)
     {
-        echo "不符合，因為數字錯誤。";
+
+        echo "不符合，因為數字錯誤，[X]為錯誤的地方。";
+        for($i = 0 ; $i < 109 ; $i++)
+        {
+            if($final[$i] != $checkarray[$i])
+            {
+                $final[$i] = "[X]";
+            }
+        }
+        for($i = 0 ; $i < 109 ; $i++)
+        {
+            echo $final[$i];
+        }
     }
+
