@@ -19,3 +19,5 @@
     參數:
         (varchar)username=你的帳號
         (int)transid=不重複的轉帳序號
+
+https://lab1-srt459vn.c9users.io/R3_HW/API/api.php?option=addUser
