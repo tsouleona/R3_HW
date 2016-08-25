@@ -111,7 +111,7 @@ require_once 'MysqlConnect.php';
         {
             $sql = "INSERT INTO `entry`(`user_id`, `transid`, `action`, `amount`, `balance`)
                 VALUES(?, ?, ?, ?, ?)";
-            $params = [$data['username'], $data['transid'], "OUT", $data['amount'], $newBalance];
+            $params = [$data['username'], $data['transid'], $data['action'], $data['amount'], $newBalance];
             $connect = new Connect();
             $connect->executeSql($sql, $params);
             $connect->pdo_connect = null;
