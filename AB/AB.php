@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>猜數字遊戲</title>
+    <title>終極密碼</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -64,15 +64,20 @@
             $("#danger").html('');
             x = $("#usernumber").val();
             ans = $("#ans").val();
+            count = $("#count").text();
             array = [];
             arrayAns = [];
             if(isNaN(x))
             {
                 $("#danger").html('<img src="error.jpg">');
+                count--;
+                $("#count").text(count);
             }
             else if(x.length > 4 || x.length < 4)
             {
                 $("#danger").html('<img src="error2.jpg">');
+                count--;
+                $("#count").text(count);
             }
             else
             {
@@ -114,7 +119,6 @@
                         }
 
                     }
-                    count = $("#count").text();
                     count--;
                     $("#count").text(count);
                     if(count == 0 && A!=4)
